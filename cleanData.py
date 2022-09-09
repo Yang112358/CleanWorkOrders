@@ -224,3 +224,75 @@ for i in range(0,size):
 report_non_hours_rate = counts/size
 
 
+
+#### counts keywords
+df1 = df[df["Building Name"]=="Coleman Hall -HS"]
+
+
+df_request = df1["Request"]
+req_txt = {}
+for words in df_request:
+    a = words.lower().split("this is a fire marshal work order")[1].replace("\n"," ")
+    a = a.replace("."," ")
+    a = a.replace(","," ")
+    a = a.replace(";"," ")
+    a = a.replace(":"," ")
+    a = a.replace("'"," ")
+    a = a.replace('"'," ")
+    a = a.replace("\\"," ")
+    a = a.replace("/"," ")
+    a = a.replace("?"," ")
+    a = a.replace(")"," ")
+    a = a.replace("the"," ")
+    """
+    a = a.replace("following"," ")
+    a = a.replace("have"," ")
+    a = a.replace("wall"," ")
+    a = a.replace("and"," ")
+    a = a.replace("locations"," ")
+    a = a.replace("that"," ")
+    a = a.replace("need"," ")
+    a = a.replace("to"," ")
+    a = a.replace("to"," ")
+    a = a.replace("with"," ")
+    a = a.replace("this"," ")
+    a = a.replace("area"," ")
+    a = a.replace("is"," ")
+    a = a.replace("for"," ")
+    a = a.replace("fire"," ")
+    a = a.replace("are"," ")
+    a = a.replace("not"," ")
+    a = a.replace("floor"," ")
+    a = a.replace("by"," ")
+    a = a.replace("photo"," ")
+    a = a.replace("location"," ")
+    a = a.replace("#"," ")
+    a = a.replace("door"," ")
+    a = a.replace("or"," ")
+    a = a.replace("a"," ")
+    a = a.replace("on"," ")
+    a = a.replace("of"," ")
+    a = a.replace("out"," ")
+    a = a.replace("date"," ")
+    a = a.replace("it"," ")
+    a = a.replace("in"," ")
+    a = a.replace("so"," ")
+    """
+    a = a.replace("&"," ")
+    a = a.split(" ")
+    for word in a:
+        try:
+            req_txt["{}".format(word)] += 1
+        except KeyError:
+            req_txt["{}".format(word)] = 1
+            
+with open('req_txt.csv', 'w') as f:
+    f.write("Key,Counts \n")
+    for key in req_txt:
+        f.write('{},{}\n'.format(key, req_txt["{}".format(key)]) )
+
+    
+
+
+
+    
