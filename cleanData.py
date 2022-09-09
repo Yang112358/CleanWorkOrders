@@ -188,3 +188,39 @@ df["working hour report"] = c
         
 df1 = pd.DataFrame(df)
 df1.to_csv("~/Downloads/Final_Data.csv")
+
+
+
+# Conpute non-regular working time percent
+size = len(a)
+counts = 0
+for i in range(0,size):
+    if a[i] < 8 or a[i] > 17:
+        counts += 1
+
+create_non_hours_rate = counts/size
+
+
+
+
+size = len(b)
+counts = 0
+for i in range(0,size):
+    if b[i] < 8 or b[i] > 17:
+        counts += 1
+
+finish_non_hours_rate = counts/size
+
+
+
+
+
+size = len(c)
+counts = 0
+for i in range(0,size):
+    if c[i] < 8 or c[i] > 17:
+        counts += 1
+
+report_non_hours_rate = counts/size
+
+
